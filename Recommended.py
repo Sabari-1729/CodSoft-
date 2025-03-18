@@ -90,7 +90,7 @@ class RecommendationSystem:
                 print(f"item {item_title} not found.")
                 return None
 
-            idx = self.data[self.data[self.item_col] == item_title].index[0]
+            idx = self.data.index[self.data[self.item_col] == item_title].tolist()[0]
             sim_scores = list(enumerate(self.item_similarity[idx]))
             sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)[1:num_recommendations + 1]
             item_indices = [i[0] for i in sim_scores]
